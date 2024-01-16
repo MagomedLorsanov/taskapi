@@ -1,7 +1,14 @@
 table {
-    width: 100%;
+    width: 70%;
     border-collapse: collapse;
     margin-bottom: 20px;
+}
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
 }
 
 th, td {
@@ -37,3 +44,53 @@ input {
 .pagination-link:hover {
     background-color: #ccc;
 }
+
+#pagination {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.page-number, .ellipsis {
+    display: inline-block;
+    margin: 0 5px;
+    color: #333;
+    text-decoration: none;
+}
+
+.page-number:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.active {
+    font-weight: bold;
+    color: red;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  ul li {
+    color: #060606;
+    display: flex;
+  }
+  ul li a {
+    /* background-color: #ffffff; */
+    padding: 5px 10px;
+    /* border: 2px solid #ffffff; */
+    /* border-right: 0; */
+  }
+  ul li.active a {
+    background-color: #e9e9e9;
+  }
+  ul li:first-child a {
+    border-radius: 5px 0 0 5px;
+  }
+  ul li:last-child a {
+    border-radius: 0 5px 5px 0;
+    /* border-right: 2px solid #3d315b; */
+  }

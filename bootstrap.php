@@ -5,7 +5,7 @@ use api\config\Database;
 use api\v1\TaskController;
 
 
-$database = new Database('localhost', 'tasks', 'root', '');
+$database = new Database('localhost', 'tasks', 'dorf', '1234');
 $controller = new TaskController($database);
 $uri = $_SERVER['REQUEST_URI'];
 
@@ -18,7 +18,12 @@ if ($uri === '/api/v1/task' && $_SERVER['REQUEST_METHOD'] === 'GET') {
 elseif (preg_match('/^\/api\/v1\/task\/(\d+)$/', $uri, $matches) && $_SERVER['REQUEST_METHOD'] === 'GET') {
     $taskId = $matches[1];
     header('Content-Type: application/json');
-    echo $controller->getTaskById($taskId);
+    $task = $controller->getTaskById($taskId);
+    if($task == 'false') {
+        header("HTTP/1.1 404 Not Found");
+        exit('404 Not Found');
+    }
+    echo $task;
 }
 // загружаем сгенерированные данные в бд
 elseif ($uri === '/api/v1/gdata') {
