@@ -21,12 +21,34 @@
             <tbody></tbody>
         </table>
         <div id="pagination"></div>
+         
+        <!-- The Modal -->
+         <div id="myModal" class="modal">
+            <div class="modal-content">
+                
+                <div class="modal-header">
+                    <h2>Информация о задаче <span></span></h2>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <button class="close">Закрыть</button>
+            </div>
+
+        </div>
     </div>
     <script src="./js/main.js"></script>
     <script src="./js/appendData.js"></script>
     <script src="./js/changePage.js"></script>
     <script src="./js/pagination.js"></script>
     <script src="./js/searchTitle.js"></script>
+    <script src="./js/getTaskById.js"></script>
+    <script src="./js/showTaskById.js"></script>
+    <script src="./js/appendOneTask.js"></script>
+    <script src="./js/storeTask.js"></script>
+
+
+
 </body>
 
 </html>

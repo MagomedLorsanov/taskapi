@@ -2,30 +2,39 @@
 
 namespace api\v1;
 
+use api\model\Task;
+
 class TaskController
 {
-    private $database;
-
-    public function __construct($database)
+    protected $task;
+    
+    public function __construct()
     {
-        $this->database = $database;
+        $this->task = new Task;
     }
 
     public function getTasks()
     {
-        $tasks = $this->database->getTasks();
-        return json_encode($tasks);
+        $task = $this->task->raw('SELECT id, title, `date` FROM tasks');
+        return $task;
     }
 
     public function storeTasks()
     {
-        $message = $this->database->storeTasks();
-        return $message;
+        $currentDate = date('Y-m-d H:i:s');
+        for ($id = 1; $id <= 1000; $id++) {
+            $this->task->setTitle('Задача ' . $id);
+            $this->task->setDate(date('Y-m-d H:i:s', strtotime($currentDate .  "$id hour")));
+            $this->task->setAuthor("Автор  $id");
+            $this->task->setStatus("Статус  $id");
+            $this->task->setDescription("Описание  $id");
+            $this->task->store();
+        }
     }
 
     public function getTaskById($taskId)
     {
-        $task = $this->database->getTaskById($taskId);
-        return json_encode($task);
+        $task = $this->task->find('id', $taskId,true);
+        return $task;
     }
 }

@@ -16,6 +16,9 @@ function appendTable(data) {
         descriptionCell.textContent = task.date;
         row.appendChild(descriptionCell);
 
+        row.addEventListener('click', function(event) {
+            fetchTaskById(task.id); // Call the function which fetches and opens the modal
+          });
         tableBody.appendChild(row);
     });
 }
